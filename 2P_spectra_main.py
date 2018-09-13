@@ -8,7 +8,7 @@ Created on Mon Sep 10 14:03:56 2018
 
 ########################
 
-## THis script runs all the neccessary functions defined in 
+## This script runs all the neccessary functions defined in 
 ## "functions_2Pspectra.py" to fit the excitation spectra of emitters.
 ##
 ## Step 1: Find emitters within the 2D image and save coordinates (global_coordinates)
