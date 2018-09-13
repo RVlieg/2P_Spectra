@@ -5,17 +5,29 @@ Created on Mon Sep 10 14:03:56 2018
 @author: vlieg
 """
 
-#Load Necessary Libraries
+
+########################
+
+## THis script runs all the neccessary functions defined in 
+## "functions_2Pspectra.py" to fit the excitation spectra of emitters.
+##
+## Step 1: Find emitters within the 2D image and save coordinates (global_coordinates)
+## Step 2: Get sub-pixel location accuracy by fitting a Gaussian to the 
+##         found global coordinates (local_coordinates)
+## Step 3: Get spectra parameters by fitting a squared Lorentzian to the found 
+##         global coordinates.
+## Step 4: Concatonate all global coordinates and fit parameters in a DataFrame 
+##         and write to a .xlsx file. 
+
+########################
+
+#%% Load Necessary Libraries
 import numpy as np
 import file_io as file_io
 import functions_2Pspectra as func 
 
-import matplotlib.pyplot as plt
-import pandas as pd
-
 
 #%% Get filename & File parameters 
-
 file_path = file_io.get_path()
 file_log  = file_io.read_logfile(file_path)
 
@@ -64,7 +76,6 @@ fit_parameters_spectra, fit_errors_spectra = func.fit_spectra(file_path,global_c
 
 
 #%% Combine Local Coordinates and Spectra fit Parameters and write to .xlsx file
-
 #Insert the local coordinates in the array of the 3D Gaussian Fit Parameters  
 fit_parameters_coordinates_wlocal=fit_parameters_coordinates
 fit_parameters_coordinates_wlocal[:,2:5]=local_coordinates
@@ -104,6 +115,4 @@ column_indices = range(0,len(column_headers))
 fit_parameters = file_io.write_xlsx_array(file_path,traces_parameters,column_headers,column_indices)
 
 
-#%%
-
-
+#%% 
