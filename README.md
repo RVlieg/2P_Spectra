@@ -1,4 +1,4 @@
-# Readme for 2P_Specra
+# Readme for 2P_Spectra
 
 2P_spectra_main calls:
 
