@@ -1,7 +1,5 @@
 # Readme for 2P_Specra
 
-Overview of the Functions 
-
 2P_spectra_main calls:
 
   - Get filepath
