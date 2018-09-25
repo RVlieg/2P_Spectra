@@ -160,3 +160,24 @@ def write_xlsx_array(file_path,data_array,column_headers,column_indices):
     writer.save()
     
     return data
+
+
+#%% Write DataFrame to Excel file 
+
+def write_pd2xlsx(file_path,pd_frame):    
+    file_name = change_extension(file_path,'.xlsx')
+    
+    try: 
+        book = load_workbook(file_name)
+        writer = pd.ExcelWriter(file_name, engine='openpyxl') 
+        writer.book = book
+        writer.sheets = dict((ws.title, ws) for ws in book.worksheets)
+        
+    except FileNotFoundError:
+        print('No .xlsx file found')        
+        writer = pd.ExcelWriter(file_name, engine='openpyxl') 
+    
+    pd_frame.to_excel(writer,'0')
+    writer.save()
+    
+    
